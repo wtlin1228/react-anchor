@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import CardsContainer from "./CardsContainer";
 import useAnchor from "./useAnchor";
@@ -29,7 +29,6 @@ const Right = styled.div`
 
 const Footer = styled.div`
   min-height: 355px;
-  padding: 100px;
 
   background: #123321;
   color: #ffffff;
@@ -48,6 +47,10 @@ const App = () => {
     cards,
     cards[0].id
   );
+
+  const [cardHeight, setCardHeight] = useState(300);
+  const [scrollOffset, setScrollOffset] = useState(0);
+
   return (
     <>
       <Container>
@@ -59,10 +62,29 @@ const App = () => {
             cards={cards}
             selectedAnchorLink={selectedAnchorLink}
             setAnchorLink={setAnchorLink}
+            cardHeight={cardHeight}
+            scrollOffset={scrollOffset}
           />
         </Right>
       </Container>
-      <Footer>我是 Footer</Footer>
+      <Footer>
+        <div>
+          <label htmlFor="card-height">卡片高度</label>
+          <input
+            id="card-height"
+            value={cardHeight}
+            onChange={(e) => setCardHeight(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="scroll-offset">滑動 Offset</label>
+          <input
+            id="scroll-offset"
+            value={scrollOffset}
+            onChange={(e) => setScrollOffset(e.target.value)}
+          />
+        </div>
+      </Footer>
     </>
   );
 };
