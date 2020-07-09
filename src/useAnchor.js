@@ -40,7 +40,11 @@ const useAnchor = (anchorLinks, defaultAnchorLink) => {
     return (
       <Container>
         {anchorLinks.map(({ id, title }) => (
-          <AnchorLink key={`anchor-link-${id}`} selected={selectedId === id}>
+          <AnchorLink
+            key={`anchor-link-${id}`}
+            selected={selectedId === id}
+            onClick={() => setSelectedId(id)}
+          >
             <a href={`#card-${id}`}>{title}</a>
           </AnchorLink>
         ))}

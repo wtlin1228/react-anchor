@@ -55,7 +55,10 @@ const CardContainer = ({
       scrollY > el.current.offsetTop - scrollOffset &&
       scrollY < el.current.offsetTop + el.current.offsetHeight - scrollOffset
     ) {
-      if (selectedAnchorLink !== id) {
+      if (
+        selectedAnchorLink !== id &&
+        scrollY + window.innerHeight !== document.body.scrollHeight
+      ) {
         setAnchorLink(id);
       }
     }
