@@ -27,6 +27,14 @@ const Right = styled.div`
   width: 60%;
 `;
 
+const Footer = styled.div`
+  min-height: 355px;
+  padding: 100px;
+
+  background: #123321;
+  color: #ffffff;
+`;
+
 const cards = [
   { id: 1, title: "企鵝說他不會說話" },
   { id: 2, title: "貓喜歡跟狗睡覺" },
@@ -41,18 +49,21 @@ const App = () => {
     cards[0].id
   );
   return (
-    <Container>
-      <Left>
-        <Anchor />
-      </Left>
-      <Right>
-        <CardsContainer
-          cards={cards}
-          selectedAnchorLink={selectedAnchorLink}
-          setAnchorLink={setAnchorLink}
-        />
-      </Right>
-    </Container>
+    <>
+      <Container>
+        <Left>
+          <Anchor />
+        </Left>
+        <Right>
+          <CardsContainer
+            cards={cards}
+            selectedAnchorLink={selectedAnchorLink}
+            setAnchorLink={setAnchorLink}
+          />
+        </Right>
+      </Container>
+      <Footer>我是 Footer</Footer>
+    </>
   );
 };
 
