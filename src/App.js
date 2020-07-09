@@ -34,6 +34,14 @@ const Footer = styled.div`
   color: #ffffff;
 `;
 
+const InputBox = styled.div`
+  margin: 30px;
+
+  label {
+    margin-right: 10px;
+  }
+`;
+
 const cards = [
   { id: 1, title: "企鵝說他不會說話" },
   { id: 2, title: "貓喜歡跟狗睡覺" },
@@ -50,6 +58,7 @@ const App = () => {
 
   const [cardHeight, setCardHeight] = useState(300);
   const [scrollOffset, setScrollOffset] = useState(0);
+  const [anchorOffset, setAnchorOffset] = useState(0);
 
   return (
     <>
@@ -64,26 +73,35 @@ const App = () => {
             setAnchorLink={setAnchorLink}
             cardHeight={cardHeight}
             scrollOffset={scrollOffset}
+            anchorOffset={anchorOffset}
           />
         </Right>
       </Container>
       <Footer>
-        <div>
+        <InputBox>
           <label htmlFor="card-height">卡片高度</label>
           <input
             id="card-height"
             value={cardHeight}
             onChange={(e) => setCardHeight(e.target.value)}
           />
-        </div>
-        <div>
+        </InputBox>
+        <InputBox>
           <label htmlFor="scroll-offset">滑動 Offset</label>
           <input
             id="scroll-offset"
             value={scrollOffset}
             onChange={(e) => setScrollOffset(e.target.value)}
           />
-        </div>
+        </InputBox>
+        <InputBox>
+          <label htmlFor="anchor-offset">錨點 Offset</label>
+          <input
+            id="anchor-offset"
+            value={anchorOffset}
+            onChange={(e) => setAnchorOffset(e.target.value)}
+          />
+        </InputBox>
       </Footer>
     </>
   );

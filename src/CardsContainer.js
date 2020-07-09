@@ -12,6 +12,8 @@ import styled from "styled-components";
 // self-defined-components
 const Container = styled.div``;
 const Card = styled.div`
+  position: relative;
+
   min-height: ${(props) => `${props.cardHeight}px`};
 
   margin: 32px;
@@ -27,6 +29,13 @@ const Card = styled.div`
     box-shadow: -3px 6px 5px 0px #94aaa0;
   }
 `;
+const CardAnchor = styled.span`
+  position: absolute;
+  top: ${(props) => `-${props.anchorOffset}px`};
+  left: 0;
+
+  height: 0;
+`;
 
 const CardContainer = ({
   id,
@@ -36,6 +45,7 @@ const CardContainer = ({
   setAnchorLink,
   cardHeight,
   scrollOffset,
+  anchorOffset,
 }) => {
   const el = useRef(null);
 
@@ -52,8 +62,9 @@ const CardContainer = ({
   }, [scrollY, id, title, selectedAnchorLink, setAnchorLink, scrollOffset]);
 
   return (
-    <Card id={`card-${id}`} ref={el} cardHeight={cardHeight}>
-      {title}
+    <Card ref={el} cardHeight={cardHeight}>
+      <CardAnchor id={`card-${id}`} anchorOffset={anchorOffset} />
+      <p>{title}</p>
     </Card>
   );
 };
@@ -64,6 +75,7 @@ const CardsContainer = ({
   setAnchorLink,
   cardHeight,
   scrollOffset,
+  anchorOffset,
 }) => {
   const [scrollY, setScrollY] = useState(0);
 
@@ -90,6 +102,7 @@ const CardsContainer = ({
           setAnchorLink={setAnchorLink}
           cardHeight={cardHeight}
           scrollOffset={scrollOffset}
+          anchorOffset={anchorOffset}
         />
       ))}
     </Container>
