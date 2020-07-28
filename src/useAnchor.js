@@ -11,9 +11,10 @@ import styled from "styled-components";
 
 // self-defined-components
 const Container = styled.div`
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
+  bottom: 500;
 `;
 const AnchorLink = styled.div`
   margin: 10px;
